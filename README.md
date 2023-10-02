@@ -6,8 +6,6 @@ Access these functions by adding namespace:
 
 <code>wayne::strUtil::</code>
 
-
-
 ## Usage
 
 - <code>subStrReplaceAll(std::string/char* mainStr, std::string/char* targetSubStr,  std::string/char* replaceToSubStr)</code>
@@ -31,7 +29,30 @@ Access these functions by adding namespace:
 - <code>subStrOrruanceIndex(std::string/char* mainStr, std::string/char* targetSubStr, int thOccurance)</code>
   
   - Get the <code>index</code> of <code>targetSubStr</code> on the <code>thOccurance</code> in the <code>mainStr.</code>
+  - Return <code>int</code>
 
+- <code>splitString(std::string/char* inputString, char splitor)</code>
+  
+  - Split the <code>inputString</code> with <code>splitor</code>, return split result with a dynamic vector.
+  
+  - Return <code>vector\<std::string\></code>
 
+- <code>splitCString(char* inputString, char splitor)</code>
+  
+  - Split the <code>inputString</code> with <code>splitor</code>, return split result with a dynamic vector.
+  
+  - Return <code>vector\<char*\></code>
+
+- <code>splitStringStatic(std::string/char* inputString, char splitor)</code>
+  
+  - Same functionality as <code>splitString()</code>, but return the split result with a fixed array.
+  
+  - Return <code>string*</code>
+
+- splitCStringStatic()
+  
+  - Same functionality as <code>splitCString()</code>, but return the split result with a fixed array.
+  
+  - Return <code>char\*\*</code>
 
 

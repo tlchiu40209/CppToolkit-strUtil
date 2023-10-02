@@ -27,6 +27,28 @@ namespace wayne
 		int subStrOccuranceIndex(const std::string mainStr, const std::string targetSubStr, const int thOccurance);
 		int subStrOccuranceIndex(const std::string* mainStr, const std::string targetSubStr, const int thOccurance);
 		int subStrOccuranceIndex(const char* mainStr, const char* targetSubStr, const int thOccurance);
+		std::vector<std::string> splitString(std::string inputString, char splitor);
+		std::vector<std::string> splitString(const std::string* inputString, char splitor);
+		std::vector<std::string> splitString(std::string* inputString, char splitor);
+		std::vector<std::string> splitString(const char* inputString, char splitor);
+		std::vector<std::string> splitString(char* inputString, char splitor);
+		std::vector<char*> splitCString(std::string inputString, char splitor);
+		std::vector<char*> splitCString(const std::string* inputString, char splitor);
+		std::vector<char*> splitCString(std::string* inputString, char splitor);
+		std::vector<char*> splitCString(const char* inputString, char splitor);
+		std::vector<char*> splitCString(char* inputString, char splitor);
+		std::string* splitStringStatic(std::string inputString, char splitor);
+		std::string* splitStringStatic(const std::string* inputString, char splitor);
+		std::string* splitStringStatic(std::string* inputString, char splitor);
+		std::string* splitStringStatic(const char* inputString, char splitor);
+		std::string* splitStringStatic(char* inputString, char splitor);
+		char** splitCStringStatic(std::string inputString, char splitor);
+		char** splitCStringStatic(const std::string* inputString, char splitor);
+		char** splitCStringStatic(std::string* inputString, char splitor);
+		char** splitCStringStatic(const char* inputString, char splitor);
+		char** splitCStringStatic(char* inputString, char splitor);
+
+
 	}
 }
 

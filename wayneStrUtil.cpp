@@ -114,5 +114,143 @@ namespace wayne
 			std::string strTargetSubStr(targetSubStr);
 			return subStrOccuranceIndex(strMainStr, strTargetSubStr, thOccurance);
 		}
+
+		/* String Splitor */
+
+		std::vector<std::string> splitString(std::string inputString, char splitor)
+		{
+			std::istringstream inputStream(inputString);
+			std::string token;
+			std::vector<std::string> splitResult;
+			while (std::getline(inputStream, token, splitor))
+			{
+				splitResult.push_back(token);
+			}
+			return splitResult;
+		}
+
+		std::vector<std::string> splitString(const std::string* inputString, char splitor)
+		{
+			return splitString(const_cast<std::string*>(inputString), splitor);
+		}
+
+		std::vector<std::string> splitString(std::string* inputString, char splitor)
+		{
+			return splitString(*inputString, splitor);
+		}
+
+		std::vector<std::string> splitString(const char* inputString, char splitor)
+		{
+			return splitString(const_cast<char*>(inputString), splitor);
+		}
+
+		std::vector<std::string> splitString(char* inputString, char splitor)
+		{
+			std::string strInputString(inputString);
+			return splitString(strInputString, splitor);
+		}
+
+		std::vector<char*> splitCString(std::string inputString, char splitor)
+		{
+			std::istringstream inputStream(inputString);
+			std::string token;
+			std::vector<char*> splitResult;
+			while (std::getline(inputStream, token, splitor))
+			{
+				//splitResult.push_back(token);
+				char* tokenChars = new char[token.length()];
+				strncpy(tokenChars, token.c_str(), token.length());
+				splitResult.push_back(tokenChars);
+			}
+			return splitResult;
+		}
+
+		std::vector<char*> splitCString(const std::string* inputString, char splitor)
+		{
+			return splitCString(const_cast<std::string*>(inputString), splitor);
+		}
+
+		std::vector<char*> splitCString(std::string* inputString, char splitor)
+		{
+			return splitCString(*inputString, splitor);
+		}
+
+		std::vector<char*> splitCString(const char* inputString, char splitor)
+		{
+			return splitCString(const_cast<char*>(inputString), splitor);
+		}
+
+		std::vector<char*> splitCString(char* inputString, char splitor)
+		{
+			std::string strInputString(inputString);
+			return splitCString(strInputString, splitor);
+		}
+
+		std::string* splitStringStatic(std::string inputString, char splitor)
+		{
+			std::vector<std::string> returnedSplit = splitString(inputString, splitor);
+			std::string* splitResult = new std::string[(int)returnedSplit.size()];
+			for (ssize_t i = 0; i < returnedSplit.size(); i++)
+			{
+				splitResult[i] = returnedSplit[i];
+			}
+			return splitResult;
+		}
+
+		std::string* splitStringStatic(const std::string* inputString, char splitor)
+		{
+			return splitStringStatic(const_cast<std::string*>(inputString), splitor);
+		}
+
+		std::string* splitStringStatic(std::string* inputString, char splitor)
+		{
+			return splitStringStatic(*inputString, splitor);
+		}
+
+		std::string* splitStringStatic(const char* inputString, char splitor)
+		{
+			return splitStringStatic(const_cast<char*>(inputString), splitor);
+		}
+
+		std::string* splitStringStatic(char* inputString, char splitor)
+		{
+			std::string strInputString(inputString);
+			return splitStringStatic(strInputString, splitor);
+		}
+
+		char** splitCStringStatic(std::string inputString, char splitor)
+		{
+			std::vector<std::string> returnedSplit = splitString(inputString, splitor);
+			char** splitResult = new char*[returnedSplit.size()];
+			for (ssize_t i = 0; i < returnedSplit.size(); i++)
+			{
+				splitResult[i] = new char[(returnedSplit[i]).length()];
+				std::strncpy(splitResult[i], (returnedSplit[i]).c_str(), (returnedSplit[i]).length());
+			}
+			return splitResult;
+		}
+
+		char** splitCStringStatic(const std::string* inputString, char splitor)
+		{
+			return splitCStringStatic(const_cast<std::string*>(inputString), splitor);
+		}
+
+		char** splitCStringStatic(std::string* inputString, char splitor)
+		{
+			return splitCStringStatic(*inputString, splitor);
+		}
+
+		char** splitCStringStatic(const char* inputString, char splitor)
+		{
+			return splitCStringStatic(const_cast<char*>(inputString), splitor);
+		}
+
+		char** splitCStringStatic(char* inputString, char splitor)
+		{
+			std::string strInputString(inputString);
+			return splitCStringStatic(strInputString, splitor);
+		}
+
+
 	}
 }
