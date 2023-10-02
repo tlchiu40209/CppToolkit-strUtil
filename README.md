@@ -26,7 +26,7 @@ Access these functions by adding namespace:
   
   - Return <code>int</code>
 
-- <code>subStrOrruanceIndex(std::string/char* mainStr, std::string/char* targetSubStr, int thOccurance)</code>
+- <code>subStrOccuranceIndex(std::string/char* mainStr, std::string/char* targetSubStr, int thOccurance)</code>
   
   - Get the <code>index</code> of <code>targetSubStr</code> on the <code>thOccurance</code> in the <code>mainStr.</code>
   - Return <code>int</code>
@@ -66,5 +66,3 @@ Access these functions by adding namespace:
   - Check whether given String/Cstring is an Integer, or float.
   
   - Return <code>bool</code>
-
-
