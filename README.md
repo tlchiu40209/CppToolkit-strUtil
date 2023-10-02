@@ -49,10 +49,22 @@ Access these functions by adding namespace:
   
   - Return <code>string*</code>
 
-- splitCStringStatic()
+- <code>splitCStringStatic()</code>
   
   - Same functionality as <code>splitCString()</code>, but return the split result with a fixed array.
   
   - Return <code>char\*\*</code>
+
+- <code>isAsciiString(std::string/char* toCheckString)</code>
+  
+  - Check whether given String/Cstring is ASCII compatibility
+  
+  - Return <code>bool</code>
+
+- <code>isNumberString(std::string/char* toCheckString, bool isFloat(Optional))</code>
+  
+  - Check whether given String/Cstring is an Integer, or float.
+  
+  - Return <code>bool</code>
 
 

@@ -251,6 +251,104 @@ namespace wayne
 			return splitCStringStatic(strInputString, splitor);
 		}
 
+		bool isAsciiString(std::string toCheckString)
+		{
+			std::string charLimits = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz[\\]";
+			for (char &character : toCheckString)
+			{
+				if (charLimits.find(character) == std::string::npos)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 
+		bool isAsciiString(const std::string* toCheckString)
+		{
+			return isAsciiString(const_cast<std::string*>(toCheckString));
+		}
+
+		bool isAsciiString(std::string* toCheckString)
+		{
+			return isAsciiString(*toCheckString);
+		}
+
+		bool isAsciiString(const char* toCheckString)
+		{
+			return isAsciiString(const_cast<char*>(toCheckString));
+		}
+
+		bool isAsciiString(char* toCheckString)
+		{
+			std::string strToCheckString(toCheckString);
+			return isAsciiString(strToCheckString);
+		}
+
+		bool isNumberString(std::string toCheckString, bool isFloat)
+		{
+			std::string floatLimits = "0123456789.";
+			std::string integerLimits = "0123456789";
+			if (isFloat)
+			{
+				if (subStrOccuranceCount(toCheckString, (std::string)".") > 1)
+				{
+					/* A float number should not have multiple dots */
+					return false;
+				}
+				if (toCheckString.at(0) == '.')
+				{
+					return false;
+				}
+				if (toCheckString.length() != 1 && toCheckString.at(0) == '0')
+				{
+						return false;
+				}
+				for (char& character : toCheckString)
+				{
+					if (floatLimits.find(character) == std::string::npos)
+					{
+						return false;
+					}
+				}
+				return true;
+			}
+			else
+			{
+				if (toCheckString.length() != 1 && toCheckString.at(0) == '0')
+				{
+					return false;
+				}
+				for (char& character : toCheckString)
+				{
+					if (integerLimits.find(character) == std::string::npos)
+					{
+						return false;
+					}
+				}
+				return true;
+			}
+		}
+
+		bool isNumberString(const std::string* toCheckString, bool isFloat)
+		{
+			return isNumberString(const_cast<std::string*>(toCheckString), isFloat);
+		}
+
+		bool isNumberString(std::string* toCheckString, bool isFloat)
+		{
+			return isNumberString(*toCheckString, isFloat);
+		}
+
+		bool isNumberString(const char* toCheckString, bool isFloat)
+		{
+			return isNumberString(const_cast<char*>(toCheckString), isFloat);
+		}
+
+		bool isNumberString(char* toCheckString, bool isFloat)
+		{
+			std::string strToCheckString(toCheckString);
+			return isNumberString(strToCheckString, isFloat);
+		}
 	}
 }
