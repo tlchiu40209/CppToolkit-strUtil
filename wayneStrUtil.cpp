@@ -30,10 +30,49 @@ namespace wayne
 			delete[] toReturn;
 		}
 
+		std::string subStrReplaceOn(const std::string mainStr, const std::string targetSubStr, const std::string replaceToSubStr, int onOccurance)
+		{
+			if (onOccurance > subStrOccuranceCount(mainStr, targetSubStr))
+			{
+				return "";
+			}
+			std::string toReturn = "";
+			toReturn += mainStr.substr(0, subStrOccuranceIndex(mainStr, targetSubStr, onOccurance));
+			toReturn += replaceToSubStr;
+			toReturn += mainStr.substr(subStrOccuranceIndex(mainStr, targetSubStr, onOccurance) + targetSubStr.length(), mainStr.length() - (subStrOccuranceIndex(mainStr, targetSubStr, onOccurance) + targetSubStr.length()));
+			return toReturn;
+		}
+
+		char* subStrReplaceOn(const char* mainStr, const char* targetSubStr, const char* replaceToSubStr, int onOccurance)
+		{
+			std::string strMainStr(mainStr);
+			std::string strTargetSubStr(targetSubStr);
+			std::string strReplaceToSubStr(replaceToSubStr);
+			char* toReturn = new char[subStrReplaceOn(strMainStr, strTargetSubStr,strReplaceToSubStr, onOccurance).length()];
+			strncpy(toReturn, subStrReplaceOn(strMainStr, strTargetSubStr,strReplaceToSubStr, onOccurance).c_str(), subStrReplaceOn(strMainStr, strTargetSubStr,strReplaceToSubStr, onOccurance).length());
+			return toReturn;
+		}
+
+		void subStrReplaceOnDirect(std::string* mainStr, const std::string targetSubStr, const std::string replaceToSubStr, int onOccurance)
+		{
+			*mainStr = subStrReplaceOn(*mainStr, targetSubStr, replaceToSubStr, onOccurance);
+		}
+
+		void subStrReplaceOnDirect(char* &mainStr, const char* targetSubStr, const char* replaceToSubStr, int onOccurance)
+		{
+			std::string strMainStr(mainStr);
+			std::string strTargetSubStr(targetSubStr);
+			std::string strReplaceToSubStr(replaceToSubStr);
+			char* toReturn = new char[subStrReplaceOn(strMainStr, strTargetSubStr,strReplaceToSubStr, onOccurance).length()];
+			strncpy(toReturn, subStrReplaceOn(strMainStr, strTargetSubStr,strReplaceToSubStr, onOccurance).c_str(), subStrReplaceOn(strMainStr, strTargetSubStr,strReplaceToSubStr, onOccurance).length());
+			strncpy(mainStr, toReturn, strlen(toReturn));
+			delete[] toReturn;
+		}
+
 		int subStrOccuranceCount(const std::string mainStr, const std::string targetSubStr)
 		{
 			int occurance = 0;
-			for (int i = 0; i < mainStr.length() - targetSubStr.length(); i++)
+			for (size_t i = 0; i < mainStr.length() - targetSubStr.length(); i++)
 			{
 				if (mainStr.substr(i, targetSubStr.length()) == targetSubStr)
 				{
@@ -46,7 +85,7 @@ namespace wayne
 		int subStrOccuranceCount(const std::string* mainStr, const std::string targetSubStr)
 		{
 			int occurance = 0;
-			for (int i = 0; i < mainStr->length() - targetSubStr.length(); i++)
+			for (size_t i = 0; i < mainStr->length() - targetSubStr.length(); i++)
 			{
 				if (mainStr->substr(i, targetSubStr.length()) == targetSubStr)
 				{
@@ -71,7 +110,7 @@ namespace wayne
 				/* This means that the *th Occurance cannot be reached */
 			} else {
 				int occurance = 0;
-				for (int i = 0; i < mainStr.length() - targetSubStr.length(); i++)
+				for (size_t i = 0; i < mainStr.length() - targetSubStr.length(); i++)
 				{
 					if (mainStr.substr(i, targetSubStr.length()) == targetSubStr)
 					{
@@ -93,7 +132,7 @@ namespace wayne
 				return -1;
 			} else {
 				int occurance = 0;
-				for (int i = 0; i < mainStr->length() - targetSubStr.length(); i++)
+				for (size_t i = 0; i < mainStr->length() - targetSubStr.length(); i++)
 				{
 					if (mainStr->substr(i, targetSubStr.length()) == targetSubStr)
 					{
@@ -190,7 +229,7 @@ namespace wayne
 		{
 			std::vector<std::string> returnedSplit = splitString(inputString, splitor);
 			std::string* splitResult = new std::string[(int)returnedSplit.size()];
-			for (ssize_t i = 0; i < returnedSplit.size(); i++)
+			for (size_t i = 0; i < returnedSplit.size(); i++)
 			{
 				splitResult[i] = returnedSplit[i];
 			}
@@ -222,7 +261,7 @@ namespace wayne
 		{
 			std::vector<std::string> returnedSplit = splitString(inputString, splitor);
 			char** splitResult = new char*[returnedSplit.size()];
-			for (ssize_t i = 0; i < returnedSplit.size(); i++)
+			for (size_t i = 0; i < returnedSplit.size(); i++)
 			{
 				splitResult[i] = new char[(returnedSplit[i]).length()];
 				std::strncpy(splitResult[i], (returnedSplit[i]).c_str(), (returnedSplit[i]).length());

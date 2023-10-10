@@ -18,9 +18,14 @@ namespace wayne
 	namespace strUtil
 	{
 		std::string subStrReplaceAll(const std::string mainStr, const std::string targetSubStr, const std::string replaceToSubStr);
-		void subStrReplaceAllDirect(std::string* const mainStr, const std::string targetSubStr, const std::string replaceToSubStr);
 		char* subStrReplaceAll(const char* mainStr, const char* targetSubStr, const char* replaceToSubStr);
+		void subStrReplaceAllDirect(std::string* mainStr, const std::string targetSubStr, const std::string replaceToSubStr);
 		void subStrReplaceAllDirect(char* &mainStr, const char* targetSubStr, const char* replaceToSubStr);
+
+		std::string subStrReplaceOn(const std::string mainStr, const std::string targetSubStr, const std::string replaceToSubStr, int onOccurance);
+		char* subStrReplaceOn(const char* mainStr, const char* targetSubStr, const char* replaceToSubStr, int onOccurance);
+		void subStrReplaceOnDirect(std::string* mainStr, const std::string targetSubStr, const std::string replaceToSubStr, int onOccurance);
+		void subStrReplaceOnDirect(char* &mainStr, const char* targetSubStr, const char* replaceToSubStr, int onOccurance);
 
 		int subStrOccuranceCount(const char* mainStr, const char* targetSubStr);
 		int subStrOccuranceCount(const std::string mainStr, const std::string targetSubStr);
